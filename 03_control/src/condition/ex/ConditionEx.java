@@ -243,15 +243,31 @@ public class ConditionEx {
 		int soc = sc.nextInt();  //사
 		int sci = sc.nextInt();  //과
 		
+ 		// 40점 미만인 과목 검사
+		boolean flag=false;
 		
-		double sum = (kor+eng+mat+soc+sci)/5;
+		String str = ""; //빈칸(자료형:String,내용X)
 		
+		if(kor<40){flag = true;}
+		if(eng<40){flag = true;}
+		if(mat<40){flag = true;}
+		if(soc<40){flag = true;}
+		if(sci<40){flag = true;}
 		
-		switch(sum / 5) {
-		case (sum < 60) : System.out.println("FAIL [점수 : "+ sum +"(평균 미달)]"); break;
+ 		// 40점 미만 과목이 존재하는 경우
+		if(flag) {System.out.printf("FAIL [점수 : %.1f (평균 미달)]");
+		return;}
+
+ 		// 평균(double형 결과를 반환 받기 위해 5.0으로 나눔)
+		double avg = (kor+eng+mat+soc+sci)/5.0;
+		
+		if(avg<60.0) {
+			System.out.printf("FAIL [점수 : %.1f(평균 미달)]",avg);
+			return; // Early return; (중간에 메서드를 종료)
 		}
 		
-		
+ 		System.out.printf("PASS [점수 : %.1f / 100]", avg);
+
 	}
 	
 	
