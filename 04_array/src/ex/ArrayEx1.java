@@ -76,7 +76,7 @@ public class ArrayEx1 {
 		//---------------------------------------
 		
 		/*Java의 배열은 크기 조절 X*/
-		arr[4]=999;
+		//arr[4]=999;
 		// ArrayIndexOutOfBoundsException : 배열 인덱스 범위 초과 예외
 		
 	}
