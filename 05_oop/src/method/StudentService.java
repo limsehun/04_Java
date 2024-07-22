@@ -51,12 +51,20 @@ public class StudentService {
 				
 				//static은 클래스명을 붙여서 호출
 				System.out.println("학교 : "+ Student.schoolName);
-				
 				System.out.println(std.toString());
-				
 				break;
-			case 3: break;
-			case 4: break;
+				
+			case 3: 
+				// 학생 이름 수정 메서드 호출 시
+				// std에 저장된 학생 객체 참조 주소 전달(얕은 복사)
+				updateName(std);
+				break;
+				
+			case 4:
+				
+				studyJava(std);
+				break;
+			
 			case 5: break;
 			
 			case 0: System.out.println("===프로그램을 종료합니다.==="); break;
@@ -92,6 +100,85 @@ public class StudentService {
 		// (== 주소 값이 복사되어 호출한 곳으로 돌아감!!!) 
 		return student;
 	}
+	
+	/*
+	 * 학생 이름 수정 메서드
+	 * @param std : 전달 받은 Student 객체 참조 주소 
+	 */
+	private void updateName(Student std) {
+		
+		System.out.println("[학생 이름 수정]");
+		System.out.println("기존이름 : "+ std.getName());
+		
+		System.out.print("변경할 이름 입력 : ");
+		String newName = sc.nextLine();
+		
+		//이름을 홍길동에서 김철수로 변경하시겠습니까?(Y/N)?
+		System.out.printf("이름을 %s -> %s 로 변경 하시겠습니까?(Y/N))",
+				std.getName(), newName);
+		
+		//String.toUpperCase()
+		//String.toLowerCase()
+		char check = sc.next().toLowerCase().charAt(0);
+		
+		if(check == 'n') {//n이 입력된 경우
+			System.out.println("===이름 변경이 취소됨===");
+			return;
+		}
+		
+		//'y'가 입력 되었을 때 
+		std.setName( newName ); //새로운 이름을 std가 참조하는 객체에 세팅
+		System.out.println("===이름 변경 완료===");
+		
+	}
+	
+	/*
+	 * 자바 공우 수행 -> std의 자바 역량 변경
+	 * 단, 수정된 자바 역량은 최댓값(100), 최소값(0) 범위 초과 불가
+	 * @param std
+	 */
+	public void studyJava(Student std) {
+		System.out.println("[Java 공부하기");
+		
+		int before = std.getJava();
+		System.out.println("현재 Java 역량 점수 : " + std.getJava());
+		
+		
+		System.out.print("증가 또는 감소한 Java 역량 점수 입력 : ");
+		int score = sc.nextInt();
+		
+		//기존 점수에 누적
+		int temp = std.getJava()+score;// 기존 점수 + 입력된 점수
+		
+		// 100점(Student.MAX_VALUE) 초과 시 Student.MAX_VALUE 대입
+		if(temp > Student.MAX_VALUE) {
+			temp = Student.MAX_VALUE;
+		}
+		
+		// 0점(Student.MIN_VALUE) 미만 시 Student.MIN_VALUE 대입
+		if(temp < Student.MIN_VALUE) {
+			temp = Student.MIN_VALUE;
+		}
+		
+		std.setJava(temp); // 참조하고 있는 학생 객체 java 필드에 대입
+		
+		
+		System.out.println("=== Java 역량 점수 수정 완료 ===");
+
+		// 기존 변경 증감
+		// 50 -> 80 (+30)
+		// 50 -> 30 (-20)
+		
+		//90 -> 100 (+30)  최대값 초과
+		// 10 -> 0 (-40)   최소값 미만
+		
+		String str=(score <= 0) ? (score + "") : ("+" + score);
+			
+		
+		System.out.printf("%d ->%d (%s) \n", before, std.getJava(), str);
+	}
+	
+	
 	
 	
 }

@@ -42,7 +42,8 @@ public class Student {
 		return name;
 	}
 		/* 매개변수 : 메서드 호출시 전달되는 값을 저장하는 변수*/
-	public void setName() {
+	public void setName(String name) {
+		this.name = name;
 		
 		// this 참조 변수 : 생성된 객체 자체를 참조하는 변수(이 객체!)
 		
