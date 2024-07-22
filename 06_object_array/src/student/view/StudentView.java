@@ -53,6 +53,31 @@ public class StudentView {
 		} while(input != 0);
 	}
 	
+	/*
+	 * 학생 추가 화면
+	 * 
+	 * 학번, 이름 성별을 입력받아
+	 * student객체로 만들어서
+	 * StudentService로 전달
+	 * -> 추가 성공시 true / 실패시 false 반환 받아
+	 * 결과 출력
+	 * 
+	 */
+	private void addStudent() {
+		
+		System.out.println("\n----학생추가---\n");
+		
+		System.out.println("학번 : ");
+		String stuentNGumber = sc.nextLine();
+		
+		System.out.print("이름 : ");
+		String name = sc.nextLine();
+		
+		System.out.println("성별(남/여) : ");
+		char gender = sc.next().charAt(0);
+		
+	}
+	
 	
 	
 }
