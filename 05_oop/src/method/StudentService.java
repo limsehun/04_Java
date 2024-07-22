@@ -65,7 +65,11 @@ public class StudentService {
 				studyJava(std);
 				break;
 			
-			case 5: break;
+			case 5: 
+				studyHtml(std);
+				break;
+			
+			
 			
 			case 0: System.out.println("===프로그램을 종료합니다.==="); break;
 			
@@ -138,7 +142,7 @@ public class StudentService {
 	 * @param std
 	 */
 	public void studyJava(Student std) {
-		System.out.println("[Java 공부하기");
+		System.out.println("[Java 공부하기]");
 		
 		int before = std.getJava();
 		System.out.println("현재 Java 역량 점수 : " + std.getJava());
@@ -178,6 +182,36 @@ public class StudentService {
 		System.out.printf("%d ->%d (%s) \n", before, std.getJava(), str);
 	}
 	
+	
+	private void studyHtml(Student std) {
+		
+		System.out.println("Html공부하기");
+		
+		int before = std.getHtml();
+		System.out.println("현재 html 역량 점수 : "+std.getHtml());
+		
+		System.out.println("증가 또는 감소한 Html 역량 점수 입력 : ");
+		int score = sc.nextInt();
+		
+		int temp = std.getHtml() +score;
+		
+		if(temp > Student.MAX_VALUE) {
+			temp = Student.MAX_VALUE;
+		}
+		
+		if(temp < Student.MIN_VALUE) {
+			temp = Student.MIN_VALUE;
+		}
+		
+		std.setHtml(temp);
+		
+		System.out.println("===Html 역량 점수 수정 완료===");
+		
+		String str = (score<=0)?(score + ""):("+"+ score);
+		
+		System.out.printf("%d -> %d (%s) \n", before, std.getHtml(),str);
+		
+	}
 	
 	
 	
