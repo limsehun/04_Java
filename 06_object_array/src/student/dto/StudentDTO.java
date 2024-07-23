@@ -11,6 +11,16 @@ public class StudentDTO {
 	private int    css;
 	private int    js;
 	private int    java;
+
+	// 점수 담는 용도로 객체 생성할 때 사용하는 생성자
+	public StudentDTO(int html, int css, int js, int java) {
+		super();
+		this.html = html;
+		this.css = css;
+		this.js = js;
+		this.java = java;
+	}
+
 	
 	// 기본 생성자 X
 	// - 생성자가 하나도 없을 경우 
