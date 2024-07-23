@@ -130,6 +130,13 @@ public class StudentService {
 		
 		return null;
 	}
+	public int checkIndex(int index) {
+		// 입력 받은 index가 정상인지 판별
+		// 1 == 범위 초과
+		// 2 == 학생 없음
+		// 3 == 정상
+		return 0;
+	}
 	
 	
 }

@@ -41,7 +41,7 @@ public class OperatorEx {
 		
 		System.out.print("정수 입력 1 : ");
 		int num1 = sc.nextInt(); // 입력 버퍼에 있는 다음 정수 읽어오기
-								 // -> 정수남 읽어오고 [엔터]는 남음!!
+								 // -> 정수만 읽어오고 [엔터]는 남음!!
 		System.out.println("정수 입력 2 : ");
 		int num2 = sc.nextInt();
 		

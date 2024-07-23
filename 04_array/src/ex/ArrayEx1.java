@@ -97,7 +97,7 @@ public class ArrayEx1 {
 			arr[i] = sc.nextInt(); // 입력 값을 배열에 대입
 		}
 		
-		// java.util.Arrays 클래스 : 배열의 유영한 기능을 모아둔 클래스
+		// java.util.Arrays 클래스 : 배열의 유용한 기능을 모아둔 클래스
 		
 		// Arrays.toString(배열명) : 배열에 저장된 값을 하나의 문자열로 반환
 		

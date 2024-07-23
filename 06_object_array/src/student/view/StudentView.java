@@ -43,7 +43,7 @@ public class StudentView {
 			case 2: allStudent(); break;
 			case 3: selectIndex(); break;
 			case 4: selectName(); break;
-			case 5:  break;
+			case 5:  updateIndex(); break;
 			case 6:  break;
 			case 7:  break;
 			
@@ -169,5 +169,41 @@ public class StudentView {
 		System.out.println(std.toString());
 		
 	}
+	
+	/**
+	 * 인덱스 번호를 입력 받아 일치하는 학생의 
+	 * html, css, js, java 점수 수정
+	 * 
+	 * 단, 입력된 인덱스 가 0 미만 
+	 *     students 배열 마지막 인덱스 초과한 경우
+	 *     "인덱스 범위가 올바르지 않습니다" (1)
+	 * 
+	 * 		정상범위 인덱스 이지만 학생이 존재하지 않는 경우
+	 * "해당 인덱스에 학생 정보가 존재하지 않습니다." 출력 (2)
+	 * 
+	 * 정상(3)
+	 */
+	private void updateIndex() {
+
+		System.out.println("\n----학생점수 수정---\n");
+		
+		System.out.println("수정할 학생의 인덱스번호 입력 : ");
+		int index=sc.nextInt();
+		
+		
+		// 입력 받은 index가 정상인지 판별
+		// 1 == 범위 초과
+		// 2 == 학생 없음
+		// 3 == 정상
+		
+		int check= service.checkIndex(index);
+
+	}
+
+
+
+
+
 }
+
 

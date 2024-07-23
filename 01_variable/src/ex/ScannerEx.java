@@ -4,7 +4,7 @@ package ex;
 import java.util.Scanner;
 
 public class ScannerEx {
-	// main mthod : 자바 실행 메서드(기능)
+	// main method : 자바 실행 메서드(기능)
 	public static void main(String[]args) {
 		/* Scanner 클래스 
 		 * 
