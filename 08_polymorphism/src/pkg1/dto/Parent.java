@@ -35,7 +35,7 @@ public class Parent /* extends Object */{
 	}
 
 	// toString() 오버라이딩
-	
+		@Override
 		public String toString() {
 			return "Parent : " + lastName + " / " + money;
 		}

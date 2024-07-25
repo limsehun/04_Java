@@ -24,6 +24,16 @@ public class Child extends Parent{
 		this.car = car;
 	}
 	
+	@Override
+	public String toString() {
+		return "Child : " + getLastName() + "/"
+						  + getMoney()    + "/"
+						  + car;
+	}
+	
+	
+	
+	
 	
 	
 }
