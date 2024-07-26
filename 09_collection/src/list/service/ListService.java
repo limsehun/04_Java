@@ -53,6 +53,125 @@ public class ListService {
 		
 		System.out.println(list.toString());
 		
+		// 2. void add(int index, E e)
+		// - index번째에 e를 추가 -> 중간에 삽입한다.
+		
+		list.add(2, "중간");
+		
+		System.out.println(list); // toString()생략가능
+		
+		// 3. int size()
+		// - 저장된 Data(객체)의 수를 반환		
+		System.out.println("현재 저장된 data 개수 : "+list.size());
+		
+		// (E == Object)
+		
+		// 4. E get(int index)
+		// - index번째 요소를 반환
+		System.out.println(list.get(0));
+		
+		// List + 일반 for 문
+		for(int i=0 ; i< list.size(); i++) {
+			
+			System.out.printf("%d번째 인덱스 요소 : %s\n", i, list.get(i));
+			
+		}
+		
+		System.out.println("----------------------------------------");
+		
+		// List + 향상된 for문
+		for(Object obj : list) {
+			
+			String str = null;
+			
+			// obj 가 참조하는 객체가
+			if(obj instanceof String)str="[String]";
+			else if(obj instanceof int[])str="[int[]]";
+			else if(obj instanceof Integer)str="[Integer]";
+			else str = "[Object]";
+			
+			
+			
+			System.out.println(str+obj);
+			
+		}
+
+		
 	}
+	
+	/*
+	 * List + 제네릭(타입제한) 확인
+	 *  + List 메서드 몇 가지 더 확인
+	 * 
+	 */
+	public void test2() {
+		
+		/* 제네릭(Generics)
+		 * 1) 컬렉션의 타입을 제한하여
+		 *  한 가지 자료형만 저장할 수 있게하는 기능
+		 *  
+		 *  2) 클래스 메서드가 다룰 타입을 지정하는 기능
+		 */
+		
+		List<String> menuList = new ArrayList<String>();
+		
+		// add() 확인
+//		menuList.add(123); // String으로 제한되어 다른 자료형 추가 불가
+		
+		menuList.add("치킨1");
+		menuList.add("냉면");
+		menuList.add("소바");
+		menuList.add("치킨2");
+		menuList.add("치킨3");
+		menuList.add("치킨4");
+		
+		//향상된for문
+		for(String menu : menuList) {
+			System.out.println(menu);
+		}
+		
+		
+		// 5. E set(int index, E e)
+		// - 지정된 index번째 요소를
+		//	 e(두번째 매개변수)로 수정
+		//	 ->메서드 반환값으로 이전 객체가 반환된다.
+		
+		System.out.println("------------------------------------");
+		System.err.println(menuList);
+		
+		String before = menuList.set(3, "갈비");
+		
+		System.out.println(before+ "가"+menuList.get(3)+"로 변경됨");
+		System.out.println(menuList);
+		
+		//6. bollean contains(E e)
+		// - List 내부에 e와 같은 객체가
+		//	 존재하면 true, 없으면 false 반환 (확인가능)
+		System.out.println("보쌈 : "+menuList.contains("보쌈"));
+		System.out.println("치킨1 : "+menuList.contains("치킨1"));
+			
+			
+		// 7. int indexOf(E e)
+		//  - List에 내부에 e와 같은 객체가 
+		//   존재하면 해당 index 반환
+		//   존재하지 않으면 -1 반환
+
+		System.out.println("삼겹살 : "+menuList.indexOf("삼겹살"));	
+		System.out.println("소바 : "+menuList.indexOf("소바"));	
+		
+		// 8. E remove(int index)
+		// - List에서 지정된 index 번째 요소를 제거
+		//   -> 중간이 제거되면 뒤쪽 요소를 앞으로 이동됨
+		// - 제거된 요소는 메서드 결과로 반환됨
+		
+		System.out.println(menuList.remove(0)+"제거");
+		System.out.println(menuList);
+			
+			
+		
+		
+	}
+	
+	
 	
 }
