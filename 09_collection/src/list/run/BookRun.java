@@ -12,6 +12,14 @@ public class BookRun {
 		
 		
 		 new BookView().mainMenu();
+		 
+		 
+		// 문자열 포함 확인
+		// Stirng.contains("검색어") : 포함이면 true / 아님 false
+//		System.out.println("선재 업고 튀어".contains("선재"));
+//		System.out.println("선재 업고 튀어".contains("업고"));
+//		System.out.println("선재 업고 튀어".contains("카리나"));
+		 
 		
 		
 	}
