@@ -45,5 +45,7 @@ public class BookDTO {
 	public String toString() {
 		return "BookDTO [title=" + title + ", writer=" + writer + ", price=" + price + "]";
 	}
+
+
 }
 	
