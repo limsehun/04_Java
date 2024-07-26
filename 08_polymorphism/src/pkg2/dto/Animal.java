@@ -46,7 +46,7 @@ public abstract class Animal {
 	 * - 끝에 중괄호{}를 지우고 세미콜론; 작성
 	 * 
 	 * - 상속받은 자식 클래스에서 
-	 * 	 해당 메소드를 정의하도록 강제함
+	 * 	   해당 메소드를 정의하도록 강제함
 	 * 	 --> 오버라이딩 강제함
 	 */
 	public abstract void move();

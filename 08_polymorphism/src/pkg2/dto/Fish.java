@@ -1,12 +1,11 @@
 package pkg2.dto;
 
-public class Fish extends Animal{
-	
-	private int gill; //아가미 개수
+public class Fish extends Animal {
+
+	private int gill; //  아가미 개수
 	
 	public Fish() {
 		super();
-		
 	}
 	
 	public Fish(int eyes, int gill) {
@@ -21,15 +20,16 @@ public class Fish extends Animal{
 	public void setGill(int gill) {
 		this.gill = gill;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Fish : " + gill + " / " + getEyes();
 	}
 	
+	
 	@Override
 	public void move() {
-		System.out.println("물고기 : 팔딱팔딱");
+		System.out.println("물고기 : 첨벙첨벙 팔딱팔딱");
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class Fish extends Animal{
 
 	@Override
 	public void sleep() {
-		System.out.println("물고기 : 무섭게 눈 뜨고 잠");
+		System.out.println("물고기 : 무섭게 눈뜨고 잠");
 	}
 
 }

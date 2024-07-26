@@ -1,7 +1,7 @@
 package pkg1.run;
 
-import pkg1.dto.Parent;
 import pkg1.dto.Child;
+import pkg1.dto.Parent;
 
 public class TestRun1 {
 	public static void main(String[] args) {
@@ -12,11 +12,13 @@ public class TestRun1 {
 		Parent p1 = new Parent();
 		
 		// 사용 가능한 필드/메서드 : Object, Parent
-		System.out.println(p1.getLastName()); //Parent
-		System.out.println(p1.hashCode()); // Object
+		System.out.println(p1.getLastName()); // Parent
+		System.out.println(p1.hashCode());    // Object
 		
 		
-		//자식참조변수=자식개체
+		System.out.println("-----------------------------");
+		
+		// 자식 참조 변수 = 자식 객체
 		Child c1 = new Child();
 		
 		// 사용 가능한 필드/메서드 : Object, Parent, Child
@@ -33,18 +35,19 @@ public class TestRun1 {
 		 * 
 		 * - 상속 관계에서만 가능!!!
 		 * 
-		 * - 참조하는 자식객체가 부모객체로 변함
-		 * 
+		 * - 참조하는 자식 객체가 부모 객체로 변함!!
 		 * */
 		
-		Parent p2 = new Child(); // 오류안남
+		Parent p2 = new Child(); // 오류 안남!!!!
 		
-		// 사용 가능한 필드/메서드 : Object
+		// 사용 가능한 필드/메서드 : Object, Parent
 		
-		System.out.println( p2.hashCode() ); // Object
-		System.out.println(p2.getLastName()); // Parent
-//		System.out.println(p2.getCar());
-		// -> Child 메서드 접근 불가
+		System.out.println( p2.hashCode() );    // Object
+		System.out.println( p2.getLastName() ); // Parent
+		
+//		System.out.println( p2.getCar() ); 
+		// -> Child 메서드 접근 불가!!!!
+		
 		
 		System.out.println("-----------------------------");
 		
@@ -56,6 +59,9 @@ public class TestRun1 {
 		 */
 		
 		Parent p3 = new Child(); // 업 캐스팅 상태
+		
+		// p3(Parent)를 Child로 강제 형변환 하여
+		// 반환된 주소를 c3에 저장
 		
 		Child c3 = (Child)p3;
 		
@@ -71,67 +77,65 @@ public class TestRun1 {
 		
 		/* Object를 이용한 업 캐스팅
 		 * + 객체 타입에 따른 다운 캐스팅
-		*/
+		 */
 		
 		// Object : 모든 클래스(객체)의 최상위 부모
 		Object[] arr = new Object[3];
-						// Object 객체 참조 변수 3개 묶음
+						// Object 참조 변수 3개 묶음
 		
-		// Object 참조변수 = Parent/Child/Object 객체
-		arr[0]=new Parent(); // parent -> Object로 업캐스팅
-		arr[1]=new Child(); // Child -> Object로 업캐스팅
-		arr[2]=new Object(); // Child -> Object로 업캐스팅
+		// Object참조변수 = Parent/Child/Object 객체
+		arr[0] = new Parent(); // Parent -> Object로 업 캐스팅
+		arr[1] = new Child();  // Child  -> Object로 업 캐스팅
+		arr[2] = new Object(); // 같은 자료형 연산
 		
 		/* instanceof 연산자
 		 * 
 		 * [작성법]
+		 * 참조변수명 instanceof 클래스명
 		 * 
-		 * - 참조하고있는 객체가
-		 * 클래스명 객체가 맞는지 확인(true/false)
+		 * - 참조 하고있는 객체가
+		 *  클래스명 객체가 맞는지 확인(true/false)
 		 * 
-		 * ** 주의사항 **
-		 * - instanceof는 참조하고 있는 객체가 
-		 * 상속하고 있는 객체도 같이 확인하기 때문에
-		 * 자식 객체를 참조하는 변수에
-		 * 부모타입을 검사하면 true가 나온다
+		 * ** 주의 사항 **
+		 * - instanceof는 참조하고 있는 객체가
+		 *   상속하고있는 객체도 같이 확인하기 때문에
+		 *   자식 객체를 참조하는 변수에
+		 *   부모 타입을 검사하면 true가 나온다!!
+		 *   
+		 *   Parent p = new Child(); // 업 캐스팅
+		 *   
+		 *   p instanceof Child  
+		 *   -> p가 참조하는 객체가 Child야?  true
+		 *   
+		 *   p instanceof Parent
+		 *   -> p가 참조하는 객체가 Parent야? true
 		 * 
-		 * Parent p = new Child(); // 업캐스팅
-		 * 
-		 * P instanceof Child
-		 * -> p가 참조하는 객체가 Child야? true
-		 * 
-		 * p instanceof Parent
-		 * -> p가 참조하는 객체가 Parent야? true
-		 * 
-		 * => 주의사항을 잘 이용하면
-		 * 		Parent, Child ,클래스 상속관계가 맞는지
-		 * 		확인하는 용도로 사용가능
-		 * 
-		 * 
+		 *  ==> 주의 사항을 잘 이용하면
+		 *     Parent, Child 클래스 상속 관계가 맞는지
+		 *     확인하는 용도로도 사용 가능!
 		 */
-		
 		
 		// 향상된 for문
 		for(Object obj : arr) {
-			/*팁. 자료형을 연달아 검사하는 경우
-			 * 마지막 자료형부터 검사하는게 좋다.
-			 * 
-			 */
+			/* tip. 자료형을 연달아 검사하는 경우 
+			 * 마지막 자식 자료형부터 검사하는게 좋다!!!
+			 * */
 			
-			//얻어온 요소가 Child타입이면
+			// 얻어온 요소가 Child  타입이면
 			if(obj instanceof Child) {
-				System.out.println("Child입니다.");
-			}
-		
-			//얻어온 요소가 Parent타입이면
-			else if(obj instanceof Parent) {
-				System.out.println("Parent입니다.");
+				System.out.println("Child 입니다");
 			}
 			
-			//얻어온 요소가 Object타입이면
-			else {
-				System.out.println("Object입니다.");
+			// 얻어온 요소가 Parent 타입이면
+			else if(obj instanceof Parent) {
+				System.out.println("Parent 입니다");
 			}
+			
+			// 얻어온 요소가 Object 타입이면
+			else {
+				System.out.println("Object 입니다");
+			}
+			
 		}
 		
 		System.out.println("------------------------------");
@@ -153,6 +157,7 @@ public class TestRun1 {
 				System.out.println("Child 입니다");
 			}
 		}
+		
 		
 	}
 }

@@ -1,6 +1,6 @@
 package pkg1.dto;
 
-//Parent 상속
+// Parent 상속
 public class Child extends Parent{
 
 	private String car;
@@ -24,14 +24,15 @@ public class Child extends Parent{
 		this.car = car;
 	}
 	
+	
+	// Parent의 toString() 오버라이딩 하기
 	@Override
 	public String toString() {
-		return "Child : " + getLastName() + "/"
-						  + getMoney()    + "/"
+		return "Child : " + getLastName() + " / "
+						  + getMoney()    + " / "
 						  + car;
+					
 	}
-	
-	
 	
 	
 	

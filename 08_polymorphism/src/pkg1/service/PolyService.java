@@ -5,7 +5,7 @@ import pkg1.dto.Parent;
 
 public class PolyService {
 
-	/**[매개변수의 다형성]
+	/** [ 매개 변수의 다형성 ]
 	 * 
 	 * 객체가 가지고 있는 필드 정보 출력
 	 * @param obj : Object 객체를 참조하는 참조 변수
@@ -19,14 +19,14 @@ public class PolyService {
 		
 		System.out.println("--------------------------------");
 		
-		// 전달받은 주소의 객체가 Child객체인 경우
-		if(obj instanceof Child) {
+		// 전달 받은 주소의 객체가 Child 객체인 경우
+		if(obj instanceof Child) { 
 			System.out.println("[Child]");
 			
-			Child ch = (Child)obj; //obj 다운캐스팅
+			Child ch = (Child)obj; // obj 다운 캐스팅
 			
-			//김 / 50000 / 소나타
-			System.out.printf("%s/%S/%s\n",
+			// 김 / 50000 / 소나타
+			System.out.printf("%s / %s / %s \n", 
 					ch.getLastName(), ch.getMoney(), ch.getCar());
 		}
 		
@@ -35,30 +35,28 @@ public class PolyService {
 			System.out.println("[Parent]");
 			
 			Parent p = (Parent)obj; // Parent로 다운 캐스팅
-			
-			System.out.printf("%s/%s \n",
-					p.getLastName(),p.getMoney());
-			
+		
+			System.out.printf("%s / %s \n",
+					p.getLastName(), p.getMoney());
 		}
 		
+		// 전달 받은 주소의 객체가 Object 객체인 경우
 		else {
 			System.out.println("[Object는 필드 없음]");
 		}
 		
 		System.out.println("--------------------------------");
-		
 	}
 	
-	/*
-	 * 매개변수의 다양성 테스트
+	
+	/**
+	 * 매개 변수의 다형성 테스트
 	 */
 	public void test1() {
 		
 		Object o = new Object();
-		
-		Parent p = new Parent("홍",100);
-		
-		Child c = new Child("박",333,"모닝");
+		Parent p = new Parent("홍", 100);
+		Child  c = new Child("박", 333, "모닝");
 		
 		printObject(o);
 		printObject(p);
@@ -72,8 +70,8 @@ public class PolyService {
 		// public void printObject(Object o){}
 		// public void printObject(Parent p){}
 		// public void printObject(Child  c){}
-		
 	}
+	
 	
 	
 	/**
@@ -93,22 +91,24 @@ public class PolyService {
 		return new Child();
 		// 생성된 객체 타입 : Child
 		// 주소 : 0x300
-		
 	}
 	
+	
 	public void test2() {
-		
 		Object o1 = getInstance(1);  // Object 객체, 0x100
 		
 		// 부모 참조변수 = 자식 객체  -> 업 캐스팅 적용
 		Object o2 = getInstance(2);  // Parent 객체, 0x200
+		
 		Object o3 = getInstance(3);  // Child  객체, 0x300
+		
 		
 		// 매개 변수의 다형성 적용 확인 메서드 호출
 		printObject(o1);
 		printObject(o2);
 		printObject(o3);
 	}
+	
 	
 	/**
 	 * 바인딩 확인
@@ -142,14 +142,14 @@ public class PolyService {
 		
 		// * 업캐스팅 상태에서는
 		//   오버라이딩한 메서드가 우선권을 갖는다!!
-	
 	}
 	
-	/*
+	/**
 	 * 객체 배열의 다형성 + 바인딩 예제
 	 */
 	public void test4() {
-		Object[]arr = new Object[4];
+		
+		Object[] arr = new Object[4];
 		
 		// 참조 변수 타입 == Object
 		// 대입되는 객체 주소 == Parent, Child (자식 타입)
@@ -157,7 +157,6 @@ public class PolyService {
 		
 		arr[0] = new Parent();
 		arr[1] = new Parent("이", 30000);
-		
 		arr[2] = new Child();
 		arr[3] = new Child("박", 60000, "캐스퍼");
 		
@@ -173,16 +172,16 @@ public class PolyService {
 			// print() 관련 구문에
 			// 참조 변수명을 작성하면
 			// 자동으로 toString() 메서드를 호출
-			
 		}
 		
-		System.out.println("---------------------");
+		System.out.println("------------------------------");
 		
-		System.out.println("[만약 동적바인딩이 없었다면");
+		System.out.println("[만약 동적 바인딩이 없었더라면...]");
 		
 		for(Object obj : arr) {
+			
 			if(obj instanceof Child) {
-				System.out.println( ((Child)obj).toString() );
+				System.out.println(  ((Child)obj).toString()  );
 			}
 			
 			else if(obj instanceof Parent) {
@@ -192,9 +191,14 @@ public class PolyService {
 			else {
 				System.out.println(obj.toString());
 			}
+			
 		}
 		
+		
 	}
+	
+	
+	
 	
 	
 }

@@ -7,7 +7,8 @@ public class AbsRun {
 		
 		AbsService service = new AbsService();
 		
-		service.test1();
+//		service.test1();
+		service.test2();
 		
 	}
 }
