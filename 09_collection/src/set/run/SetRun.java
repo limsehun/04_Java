@@ -11,6 +11,8 @@ public class SetRun {
 		service.test1();
 		service.test2();
 		service.test3();
+		service.test4();
+		service.lottoNumberGenerator();
 			
 		
 	}

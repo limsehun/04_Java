@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 import set.dto.Person;
 
@@ -218,6 +221,101 @@ public class SetService {
 
 		}
 		
+		/*
+		 * TreeSet : 이진 트리 구조를 이용해 객체를 저장하는 Set
+		 * 	 -> 오름차순 정렬 + 중복 제거
+		 * 
+		 * ** 선행조건 **
+		 * - 저장되는 객체가 comparable 인터페이스를 상속해 구현해야함
+		 */
+		public void test4() {
+			
+			// 로또 번호 생성기
+			Random random = new Random();
+			
+			Set<Integer> lotto = new TreeSet<Integer>();
+			while(lotto.size()<6) {
+				lotto.add( random.nextInt(45) + 1 ); // 1 ~ 45 난수를 TreeSet에 추가
+			}
+			System.out.println(lotto);
+		}
 		
-	
-}
+		/** 로또 번호 생성기
+		 * 
+		 * - 금액을 천원 단위로 입력 받아
+		 *   천원당 1회씩 번호를 생성해서 List에 저장한 후 
+		 *   생성 종료되는 시점에 한 번에 출력
+		 *   
+		 *   단, 5회 출력 시 마다 구분선 추가
+		 *   
+		 * <pre>
+		 * 금액 입력 : 6000
+		 * 
+		 * 1회 : [1, 2, 3, 4, 5, 6]
+		 * 2회 : [12, 13, 14, 21, 22, 34]
+		 * 3회 : [17, 33, 35, 41, 42, 45]
+		 * 4회 : [17, 33, 35, 41, 42, 45]
+		 * 5회 : [17, 33, 35, 41, 42, 45]
+		 * --------------------------------
+		 * 6회 : [17, 33, 35, 41, 42, 45]
+		 * 
+		 * </pre>
+		 */
+		public void lottoNumberGenerator() {
+			
+			Scanner sc = new Scanner(System.in);
+			
+			// 생성된 로또 번호(1회)를 저장할 List 생성
+			List<Set<Integer>> lottoList
+				= new ArrayList<Set<Integer>>();
+			
+			System.out.print("금액 입력 : ");
+			int price = sc.nextInt();
+			
+			
+			Random random = new Random();
+			
+			// 입력된 금액 천원당 1회 반복
+			for(int i=0 ; i < price / 1000 ; i++) {
+				
+				// 1회치에 해당되는 로또 번호 생성
+				Set<Integer> lotto = new TreeSet<Integer>();
+				
+				while(lotto.size() < 6) {
+					lotto.add(random.nextInt(45) + 1);
+				}
+				
+				// lottoList에 추가
+				lottoList.add(lotto);
+				
+			}
+			
+			// 제시된 형태에 맞게 출력
+			for(int i=0 ; i<lottoList.size() ; i++) {
+				
+//				if(i % 5 == 0) {
+//					System.out.println("-----------------------------");
+//				}
+				
+				System.out.printf("%d회 : %s \n", 
+						i+1, lottoList.get(i).toString());
+				
+				// 5/10/15/... 출력한 후에
+				if((i+1) % 5 == 0) {
+					System.out.println("-----------------------------");
+				}
+			}
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+	}
+
