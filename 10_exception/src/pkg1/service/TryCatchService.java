@@ -235,7 +235,8 @@ public class TryCatchService {
 		
 		// Unhandled exception type Exception
 		// -> 예외처리 안했어~
-		throw new Exception(); // -> 예외 처리 코드 작성 필요
+		//throw new Exception(); 
+		// -> 예외 처리 코드 작성 필요
 		
 	}
 	
