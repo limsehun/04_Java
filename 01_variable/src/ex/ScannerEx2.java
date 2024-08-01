@@ -64,7 +64,7 @@ public class ScannerEx2 {
  * 
  * 키보드 입력 -> 입력 버퍼 -> sc.next자료형() 구문 위치
  * 
- * - nextLinre()을 제외한 next관련 구문들은
+ * - nextLine()을 제외한 next관련 구문들은
  * 입력 버퍼에 저장된 값 중
  * 해당 자료형 값을 앞에서 부터 읽어옴
  * 
@@ -87,7 +87,7 @@ public class ScannerEx2 {
  *  남아있는 [엔터]를 꺼내가서 없애라
  *  
  *  int num =sc.nextInt();
- *  sc.nextLine(); // 입력 버퍼에 남아있는 [엔ㅌ터] 제거
+ *  sc.nextLine(); // 입력 버퍼에 남아있는 [엔터] 제거
  *  String str = sc.nextLine();
  * 
  * 

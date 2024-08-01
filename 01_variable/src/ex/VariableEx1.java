@@ -5,7 +5,7 @@ package ex;
  * 2) ctrl + f11
  * 
  * System.out.println() 자동완성	
- * - sysout -> ctrl + space -> enter 
+ * - syso   -> ctrl + space -> enter 
  * 
  * */
 
