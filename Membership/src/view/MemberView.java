@@ -50,11 +50,11 @@ public class MemberView {
 				// 선택된 메뉴 번호에 따라 case 선택
 				switch(input) {
 				case 1: addMember(); break;
-				
 				case 2: selectAll(); break;
+				case 3: selectName(); break;
 				
-				case 3: break;
-				case 4: break;
+				case 4: updateAmount();  break;
+				
 				case 5: break;
 				case 6: break;
 				case 0: System.out.println("*** 프로그램 종료 ***"); break;
@@ -160,39 +160,123 @@ public class MemberView {
 		// 조회된 회원 목록이 없을 경우
 		// -> MemberDaoImpl 생성자 코드에 의해서
 		//   memberList는 "절대로" null이 될 수 없다!!!!
-		// -> 참조하는 List는 있지만 비어있는지 검사를 해야한다
+		
+		// -> 참조하는 List는 있지만 비어있는지 검사를 해야한다!
 		if(memberList.isEmpty()) {
-			System.out.println("\n***회원이 존재하지 않습니다.***\n");
+			System.out.println("\n### 회원이 존재하지 않습니다 ###\n");
 			return;
 		}
 		
 		
-		
-		
 		String[] gradeArr = {"일반", "골드", "다이아"};
+		
 		
 		System.out.println("-------------------------------------------");
 		
-		System.out.printf("%-6s %-7s %4s %5s \n",
+		System.out.printf("%-5s %-7s %8s %4s \n",
 				"[이름]", "[휴대폰 번호]", "[누적금액]", "[등급]");
 		
 		System.out.println("-------------------------------------------");
-				
+		
+		
 		// 향상된 for문
 		for(Member member : memberList) {
+		
+			System.out.printf("%-6s %-12s %8d %5s \n",
+				member.getName(), member.getPhone(),
+				member.getAmount(),  gradeArr[member.getGrade()] );
 			
-			System.out.printf("%-6s %-12s %6d %8s \n",
-					member.getName(), 
-					member.getPhone(), 
-					member.getAmount(), 
-					gradeArr[member.getGrade()]);
-			
+		}
+	}
+	
+	
+	
+	// ------------------------------------------------------------------------
+	// [이름으로 검색(동명이인)]
+	
+	private void selectName() throws IOException {
+		System.out.println("\n----- 이름 검색(동명이인 있으면 모두 조회) -----\n");
+		
+		// 검색할 이름 입력 받기
+		System.out.print("검색할 이름 입력 : ");
+		String searchName = br.readLine();
+		
+		// 이름 검색 서비스 호출 후 결과 반환 받기
+		List<Member> searchList = service.selectName(searchName);
+		
+		// 검색 결과가 없을 경우
+		if(searchList.isEmpty()) {
+			System.out.println("\n### 검색 결과가 없습니다 ###\n");
+			return;
+		}
+		
+		
+		// 검색 결과가 있을 경우
+		for(Member member : searchList) {
+			System.out.println(member);
 		}
 		
 		
 	}
 	
+	//------------------------------------------------------------
+	// [특정 회원 사용 금액 누적하기]
 	
+	private void updateAmount() throws IOException {
+		System.out.println("\n----- 특정 회원 사용 금액 누적하기 -----\n");
+		
+		System.out.println("회원 이름 입력 : ");
+		String targetName = br.readLine();
+		
+		// 이름이 일치하는 회원 모두 조회
+		List<Member> searchList = service.selectName(targetName);
+		
+		// 이름이 일치하는 회원이 없을 경우
+		if(searchList.isEmpty()) {
+			System.out.println("\n### 이름이 일치하는 회원이 존재하지 않습니다 ###\n");
+			return;
+		}
+		
+	
+		// 금액 증가 대상 회원만 참조할 Member 참조 변수 선언
+		Member target = null;
+		
+		// 1) 동명이인이 있을 경우
+		//    -> 이름/전화번호를 출력해서 한 명만 선택하게 함
+		if(searchList.size() > 1) {
+			System.out.println("\n*** 대상 회원을 선택 해주세요 ***\n");
+			
+			// 일반 for문 사용 이유 -> i 값 활용하고 싶어서
+			for(int i = 0 ; i < searchList.size() ; i++) {
+				System.out.printf("%d) %s (%s)\n",
+						i+1, 
+						searchList.get(i).getName(),
+						searchList.get(i).getPhone());
+			}
+			
+			System.out.print("선택할 회원의 번호를 입력 : ");
+			int input = Integer.parseInt( br.readLine() ) - 1;
+						// 문자열 -> 정수로 변환
+						// 입력된 번호를 index에 맞추기 위해 -1
+			
+			// 입력된 번호가 searchList의 index범위를 초과한 경우
+			if(input < 0 || input >= searchList.size()) {
+				System.out.println("\n### 없는 회원 번호 입니다. 다시 시도 해주세요 ###\n");
+				return;
+			}
+			
+			// target에 회원 저장
+			target = searchList.get(input);
+		
+		} else {
+			// 2) 동명이인이 없을 경우
+			target = searchList.get(0);
+		}
+		
+		
+		
+		
+	}
 	
 	
 	

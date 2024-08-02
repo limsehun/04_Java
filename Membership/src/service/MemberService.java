@@ -29,7 +29,16 @@ public interface MemberService {
 	 * 전체 회원 목록 조회
 	 * @return memberList
 	 */
-	public abstract List<Member> getMemberList();                        
+	public abstract List<Member> getMemberList();  
+	
+	
+	/**
+	 * searchName과 같은 이름을 지닌 회원 조회
+	 * - 동명이인 존재시 모두 조회
+	 * @param searchName
+	 * @return searchList (저장된 요소 0개 이상)
+	 */
+	List<Member> selectName(String searchName);
 	
 	
 	

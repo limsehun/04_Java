@@ -2,6 +2,7 @@ package service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import dao.MemberDao;
@@ -57,6 +58,7 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	
+	
 	// DAO에서 조회한 memberList를 그대로 반환
 	// (해당 서비스 메서드는 따로 처리할 조건/기능이 없어서
 	//  중간에서 전달만 해주는 역할이됨)
@@ -64,6 +66,34 @@ public class MemberServiceImpl implements MemberService{
 	public List<Member> getMemberList() {
 		return dao.getMemberList();
 	}
+	
+	
+	// 이름 검색
+	@Override
+	public List<Member> selectName(String searchName) {
+		
+		// DAO를 이용해서 회원 전체 목록 조회
+		List<Member> memberList = dao.getMemberList();
+		
+		// memberList에 저장된 요소(회원) 중 
+		// 이름이 같은 회원을 찾아서 
+		// 검색 결과를 저장할 별도 List에 추가
+		List<Member> searchList = new ArrayList<Member>();
+		
+		for(Member member : memberList) {
+			
+			if(member.getName().equals(searchName)) {
+				searchList.add(member);
+			}
+		}
+		
+		
+		return searchList; // 검색 결과 반환
+	}
+	
+	
+	
+	
 	
 	
 	
