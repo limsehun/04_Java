@@ -47,7 +47,7 @@ public class ListService {
 		list.add(new int[4]); // 3번째
 		
 		// 4번째 -> 크기 초과 오류 발생 테스트
-		// 		--> List 크기가 자동을로 증가
+		// 		--> List 크기가 자동으로 증가
 		
 		list.add(123); // int기본자료형은 추가 불가
 					   // -> Integer Wrapper class로
